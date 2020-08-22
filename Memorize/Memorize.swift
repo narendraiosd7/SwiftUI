@@ -16,7 +16,7 @@ struct Memorize: View {
             }
         }
         .padding()
-        .font(Font.largeTitle)
+//        .font(Font.largeTitle)
         .foregroundColor(.orange)
     }
 }

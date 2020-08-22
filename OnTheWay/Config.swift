@@ -63,16 +63,16 @@ class Config {
     
     func updateStrings(_ translation: Translation) {
         strings = StaticData.init(translation: translation)
-        xmsNotification.postNotification(info: [xmsNotification.eventKey: NotificationType.languageGotUpdated.rawValue])
+//        xmsNotification.postNotification(info: [xmsNotification.eventKey: NotificationType.languageGotUpdated.rawValue])
     }
 }
 
 class StaticData {
     
     init() {
-        if let data = DocumentsAdapter.getData(path: DocumentPath.translation.rawValue) {
+        if let data = DocumentAdpter.getData(path: DocumentPath.translation.rawValue) {
             do {
-                let translation = try JSONDecoder().decode(Translation.self, from: data)
+                let translation = try! JSONDecoder().decode(Translation.self, from: data)
                 update(translation: translation)
             }
         }
@@ -90,7 +90,7 @@ class StaticData {
     func storeData(_ translation: Translation) {
         do {
             let data = try JSONEncoder().encode(translation)
-            DocumentsAdapter.saveFile(data, path: DocumentPath.translation.rawValue)
+            DocumentAdpter.saveToFile(data, path: DocumentPath.translation.rawValue)
         } catch {
             
         }
