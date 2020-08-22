@@ -36,9 +36,3 @@ struct CardView: View {
         }
     }
 }
-
-struct Memorize_Previews: PreviewProvider {
-    static var previews: some View {
-        Memorize()
-    }
-}
